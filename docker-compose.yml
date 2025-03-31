@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: ./  # Ensure the 'web' directory exists in the root of your repository
+    ports:
+      - "80:80"  # Expose port 80 on the host to port 80 in the container
+    volumes:
+      - ./web:/usr/share/nginx/html  # Mount the 'web' directory to the container
+    depends_on:
+      - db  # Ensure db is started before web
+  
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=mywebpassword  # MySQL root password
+      - MYSQL_DATABASE=mydb  # Database name
+    volumes:
+      - db_data:/var/lib/mysql  # Volume for persistent database storage
+    networks:
+      - mynetwork  # Create a custom network for communication
+
+volumes:
+  db_data:  # Named volume to persist MySQL data
+
+networks:
+  mynetwork:
+    driver: bridge  # Default network driver for macOS (works well with Docker on macOS)
