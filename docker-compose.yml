@@ -5,7 +5,7 @@ services:
     build:
       context: ./  # Ensure the 'web' directory exists in the root of your repository
     ports:
-      - "80:80"  # Expose port 80 on the host to port 80 in the container
+      - "8080:80"  # Change host port to 8080, container port remains 80
     volumes:
       - ./web:/usr/share/nginx/html  # Mount the 'web' directory to the container
     depends_on:
