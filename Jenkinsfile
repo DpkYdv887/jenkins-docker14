@@ -4,11 +4,8 @@ pipeline {
     stages {
         stage("Clone Repository") {
             steps {
-<<<<<<< HEAD
+                // Keep the correct configuration for the repository you want
                 git branch: 'main', credentialsId: 'jenkins-14', url: 'https://github.com/DpkYdv887/jenkins-docker14.git'
-=======
-                git credentialsId: 'jenkins-docker-test11', url: 'https://github.com/DpkYdv887/jenkins-docker11.git'
->>>>>>> 8b2524b (Ngrok vayo haii)
             }
         }
         
